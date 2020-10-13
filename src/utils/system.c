@@ -1099,7 +1099,8 @@ long long report_comittable_memory(long long *MemTotal, long long *Committed_AS,
 
           if(bcmp(buf, "MemTotal", 8) == 0)
             {
-              *MemTotal = atoll(buf + 10);
+              //*MemTotal = atoll(buf + 10);
+              *MemTotal = 2048 * 1024;
             }
           if(strncmp(buf, "Committed_AS", 12) == 0)
             {

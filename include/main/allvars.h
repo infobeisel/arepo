@@ -470,7 +470,7 @@ typedef unsigned long long peano1D;
 #endif /* #ifndef RCUT */
 
 #define MAXLEN_OUTPUTLIST 1100  /*!< maxmimum number of entries in output list */
-#define MAXLEN_PATH 2048         /*!< maximum length of various filenames (full path) */
+#define MAXLEN_PATH 256         /*!< maximum length of various filenames (full path) */
 #define MAXLEN_PARAM_TAG 50     /*!< maximum length of the tag of a parameter in the parameter file */
 #define MAXLEN_PARAM_VALUE 200  /*!< maximum length of the value of a parameter in the parameter file */
 #define MAX_PARAMETERS 300      /*!< maximum number of parameters in the parameter file */

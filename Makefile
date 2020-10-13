@@ -48,7 +48,7 @@ HWLOC_LIB = -lhwloc
 ifeq ($(SYSTYPE),"Darwin")
 # compiler and its optimization options
 CC        =  mpicc   # sets the C-compiler
-OPTIMIZE  =  -std=c11 -ggdb -O3 -Wall -Wno-format-security -Wno-unknown-pragmas -Wno-unused-function
+OPTIMIZE  =  -std=c11 -ggdb -O3 -Wall -Wno-format-security -Wno-unknown-pragmas -Wno-unused-function -fPIC
 
 # overwrite default:
 MPICH_LIB = -lmpi
@@ -68,7 +68,7 @@ endif
 
 # AREPOVTK
 CC        = mpicc
-OPTIMIZE  = -std=c11 -g -O3
+OPTIMIZE  = -std=c11 -g -O3 -fPIC
 MPICH_LIB = -lmpi
 
 GSL_INCL  = -I${GSL_HOME}/include
@@ -305,7 +305,7 @@ endif
 #combine compiler options#
 ##########################
 
-CFLAGS = $(OPTIMIZE) $(HDF5_INCL) $(GSL_INCL) $(FFTW_INCL) $(HWLOC_INCL) -I$(BUILD_DIR)
+CFLAGS = $(OPTIMIZE) $(HDF5_INCL) $(GSL_INCL) $(FFTW_INCL) $(HWLOC_INCL) -I$(BUILD_DIR) #-DMETALS
 
 LIBS = $(GMP_LIB) $(MATH_LIB) $(MPICH_LIB) $(HDF5_LIB) $(GSL_LIB) $(FFTW_LIB) $(HWLOC_LIB)
 
@@ -342,6 +342,10 @@ $(EXEC): $(OBJS)
 
 lib$(LIBRARY).a: $(filter-out $(BUILD_DIR)/main.o,$(OBJS))
 	$(AR) -rcs lib$(LIBRARY).a $(OBJS)
+
+
+lib$(LIBRARY).so: $(filter-out $(BUILD_DIR)/main.o,$(OBJS))
+	$(CC) -shared -o lib$(LIBRARY).so $(OBJS)
 
 clean:
 	@echo Cleaning all build files...
