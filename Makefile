@@ -48,7 +48,8 @@ HWLOC_LIB = -lhwloc
 ifeq ($(SYSTYPE),"Darwin")
 # compiler and its optimization options
 CC        =  mpicc   # sets the C-compiler
-OPTIMIZE  =  -std=c11 -ggdb -O3 -Wall -Wno-format-security -Wno-unknown-pragmas -Wno-unused-function -fPIC
+#OPTIMIZE  =  -std=c11 -ggdb -O3 -Wall -Wno-format-security -Wno-unknown-pragmas -Wno-unused-function -fPIC
+OPTIMIZE  =  -std=c11 -O3 -Wall -Wno-format-security -Wno-unknown-pragmas -Wno-unused-function -fPIC
 
 # overwrite default:
 MPICH_LIB = -lmpi
@@ -68,7 +69,8 @@ endif
 
 # AREPOVTK
 CC        = mpicc
-OPTIMIZE  = -std=c11 -g -O3 -fPIC
+#OPTIMIZE  = -std=c11 -g -O3 -fPIC
+OPTIMIZE  = -std=c11 -O3 -fPIC
 MPICH_LIB = -lmpi
 
 GSL_INCL  = -I${GSL_HOME}/include
