@@ -75,8 +75,8 @@ GSL_INCL  = -I${GSL_HOME}/include
 GSL_LIB   = -L${GSL_HOME}/lib -lgsl -lgslcblas
 FFTW_INCL = -I${FFTW_HOME}/include
 FFTW_LIBS = -L${FFTW_HOME}/lib
-HDF5_INCL = -I${HDF5_HOME}/include -DH5_USE_16_API
-HDF5_LIB  = -L${HDF5_HOME}/lib -lhdf5
+HDF5_INCL = -I/root/miniconda3/envs/lm/include -DH5_USE_16_API  #${HDF5_HOME}/include -DH5_USE_16_API
+HDF5_LIB  = -L/root/miniconda3/envs/lm/lib -lhdf5 #${HDF5_HOME}/lib -lhdf5
 
 # END AREPOVTK
 
